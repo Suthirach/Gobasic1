@@ -1,6 +1,8 @@
 package main
 
 import (
+	"basic/calculator"
+
 	"fmt"
 )
 
@@ -238,4 +240,102 @@ func main() {
 	for _, value := range language {
 		fmt.Println("Value = ", value)
 	}
+	// func
+	// func แบบที่ 1
+	sect1()       //hello
+	sect2("toon") //hello toon
+
+	// func แบบที่ 2
+	total(5, 6) //ยอดรวม =  11
+
+	// func แบบที่ 3
+	Delv := getDelivery()
+	fmt.Println(Delv) // 50
+
+	// func แบบที่ 4
+	Carttotal := cart(5, 5)
+	fmt.Println(Carttotal) //10
+
+	// func ที่สามารถส่งค่าไกมากกว่า 1 ค่า
+	reslut, chack := summation(50, 50)
+	fmt.Println("ผมรวม = ", reslut)
+	fmt.Println(chack) // ผมรวม =  100 / เลขคู่
+
+	reslut2 := summation2(50, 50, 50, 50, 50, 50, 50, 50)
+	fmt.Println("ผมรวม = ", reslut2) //ผมรวม =  400
+
+	// Structure
+	SEC()
+
+	// packsge
+	fmt.Println(calculator.Add(50, 50, 50, 50, 50, 50))
+
 }
+
+// func แบบที่ 1
+func sect1() {
+	fmt.Println("hello")
+} //hello
+
+func sect2(name string) {
+	fmt.Println("hello", name)
+} //hello toon
+
+// func แบบที่ 2
+func total(nub1 int, nub2 int) { //หรือจะรวบเป็น (nub1, nub2 int ) ถ้าประเภทข้อมูลเหมือนกัน
+	fmt.Println("ยอดรวม = ", nub1+nub2)
+
+} //ยอดรวม =  11
+
+// func แบบที่ 3
+func getDelivery() int {
+	return 50
+} // 50
+
+// func แบบที่ 4
+func cart(nub1, nub2 int) int {
+	total := nub1 + nub2
+	return total
+
+} //10
+
+// func ที่สามารถส่งค่าไกมากกว่า 1 ค่า
+func summation(nub1, nub2 int) (int, string) {
+	total := nub1 + nub2
+	status := ""
+	if total%2 == 0 {
+		status = "เลขคู่"
+	} else {
+		status = "เลยคี่"
+	}
+	return total, status
+} // ผมรวม =  100 / เลขคู่
+
+// func แบบเพิ่มพารามิเตอร์ไม่กำจัด
+
+func summation2(nub ...int) int {
+	total := 0
+	for _, value := range nub {
+		total += value
+	}
+	return total
+} //ผมรวม =  400
+
+// Structure กลุ่มข้อมูลที่มีความหลากหลายในทางประเ๓ทข้อมูล เพื่อมาปิดข้อมบกพร่องของArray
+type Product struct {
+	name      string
+	price     int
+	catalogry string
+	discount  int
+}
+
+func SEC() {
+	Product := Product{name: "earmoniter", price: 1500, catalogry: "ectis", discount: 100}
+	fmt.Println(Product)       //{earmoniter 1500 ectis 100}
+	fmt.Println(Product.name)  //earmoniter
+	fmt.Println(Product.price) //1500
+	Product.name = "computer"  // การเปลี่ยนค่าใน Structure
+	fmt.Println(Product)       //{computer 1500 ectis 100}
+}
+
+//package
